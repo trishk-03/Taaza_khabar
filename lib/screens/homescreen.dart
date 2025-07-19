@@ -13,14 +13,14 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Taaza khabar', style: TextStyle(fontSize: 28),),
+        title: Text('Taaza khabar', style: TextStyle(fontSize: 34,fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: Column(
         children: [
           Text("Latest News", style: TextStyle(fontSize: 19),),
           SizedBox(height: MediaQuery.of(context).size.height* 0.001,),
-         SingleChildScrollView(
+          SingleChildScrollView(
            scrollDirection: Axis.horizontal,
            child: Row(
              children: [
@@ -30,6 +30,9 @@ class _HomescreenState extends State<Homescreen> {
              ],
            ),
          ),
+
+        // Explore Section
+
 
         ],
 
