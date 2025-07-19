@@ -66,3 +66,39 @@ class News_block extends StatelessWidget{
     );
   }
 }
+
+
+
+// category tile
+
+class CategoryTile extends StatelessWidget {
+  final  image;
+  final  categoryname;
+  const CategoryTile({super.key, required this.image, required this.categoryname});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 20.0),
+      child: Stack(
+        children: [
+          ClipRRect(
+              borderRadius: BorderRadius.circular(60),
+              child: Image.asset(image , height: 120, width: 120,fit: BoxFit.cover,)),
+              Container(
+                height: 120,
+                width: 120,
+                decoration: BoxDecoration(color: Colors.black45,borderRadius: BorderRadius.circular(60),),
+              ),
+              SizedBox(
+                height: 120,
+                width: 120,
+                child: Align(
+                  alignment: Alignment.center,
+                    child: Text(categoryname,style: TextStyle(color : Colors.white,fontWeight: FontWeight.bold,fontSize: 15.0),)),
+              ),
+        ],
+      ),
+    );
+  }
+}
