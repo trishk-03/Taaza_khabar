@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taaza_khabar/screens/onboarding_screen.dart';
+import 'package:taaza_khabar/screens/splash_screen.dart';
 
 void main (){
   runApp(MyApp());
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget{
         primarySwatch: Colors.deepPurple, // Optional in dark mode
       ),
       themeMode: ThemeMode.system, // Switches based on device setting
-      home: OnboardingScreen(),
+      home: SplashScreen(),
     );
 
   }

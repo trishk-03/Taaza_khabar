@@ -21,7 +21,7 @@ class _HomescreenState extends State<Homescreen> {
   void initState() {
     super.initState();
     categories = getCategory();
-    getNews(); // Call API here
+    getNews();
   }
 
   getNews() async {
@@ -36,12 +36,21 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF121212), // Dark background
       appBar: AppBar(
+        backgroundColor: const Color(0xFF1E1E1E),
+        elevation: 0,
         title: const Text(
           'Taaza Khabar',
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+            color: Colors.deepPurpleAccent,
+            letterSpacing: 1.0,
+          ),
         ),
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.deepPurpleAccent),
       ),
       body: SafeArea(
         child: Padding(
@@ -49,13 +58,14 @@ class _HomescreenState extends State<Homescreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               const Text(
                 "Explore",
                 style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.purple),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.deepPurpleAccent,
+                ),
               ),
               const SizedBox(height: 10),
               SizedBox(
@@ -75,25 +85,34 @@ class _HomescreenState extends State<Homescreen> {
               const Text(
                 "Latest News",
                 style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.purple),
-              ),
-              const SizedBox(height: 10),
-              if (loading) const Expanded(
-                  child: Center(child: CircularProgressIndicator()))
-              else Expanded(
-                child: ListView.builder(
-                  itemCount: articles.length,
-                  itemBuilder: (context, index) {
-                    return News_block(
-                      image: articles[index].urlToImage ?? '',
-                      title: articles[index].title ?? 'No Title',
-                      news: articles[index].desc ?? 'No Description',
-                    );
-                  },
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.deepPurpleAccent,
                 ),
               ),
+              const SizedBox(height: 10),
+              if (loading)
+                const Expanded(
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.deepPurpleAccent,
+                      strokeWidth: 3,
+                    ),
+                  ),
+                )
+              else
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: articles.length,
+                    itemBuilder: (context, index) {
+                      return News_block(
+                        image: articles[index].urlToImage ?? '',
+                        title: articles[index].title ?? 'No Title',
+                        news: articles[index].desc ?? 'No Description',
+                      );
+                    },
+                  ),
+                ),
             ],
           ),
         ),
@@ -101,5 +120,3 @@ class _HomescreenState extends State<Homescreen> {
     );
   }
 }
-
-

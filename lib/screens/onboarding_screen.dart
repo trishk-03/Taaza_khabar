@@ -6,74 +6,114 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           // Background Image
-          Image.asset(
-            "assets/images/onboard.jpg",
-            height: MediaQuery.of(context).size.height / 1.3,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover,
+          SizedBox(
+            height: size.height,
+            width: size.width,
+            child: Image.asset(
+              "assets/images/onboard.jpg",
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          // Gradient Overlay
+          Container(
+            height: size.height,
+            width: size.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Colors.black.withOpacity(0.8),
+                ],
+              ),
+            ),
           ),
 
           // Bottom Container
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              width: double.infinity,
+            child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-              decoration: const BoxDecoration(
-                color: Color(0xFF1C1C1E),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.85),
+                  borderRadius: BorderRadius.circular(30),
                 ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text(
-                    'Welcome to Taaza Khabar',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Welcome to',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.grey[400],
+                        letterSpacing: 1.2,
+                      ),
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'Your daily dose of fresh and trusted news, right at your fingertips.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[300],
+                    const SizedBox(height: 6),
+                    const Text(
+                      'Taaza Khabar',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        letterSpacing: 1.5,
+                      ),
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 20),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Your daily dose of fresh and trusted news, right at your fingertips.',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[300],
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 28),
 
-                  // Button
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.75,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Homescreen()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                    // Get Started Button
+                    SizedBox(
+                      width: size.width * 0.75,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => const Homescreen()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepPurpleAccent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 8,
+                          shadowColor: Colors.deepPurpleAccent.withOpacity(0.5),
+                        ),
+                        child: const Text(
+                          "Get Started",
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                      child: const Text(
-                        "Get Started",
-                        style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.bold),
-                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
