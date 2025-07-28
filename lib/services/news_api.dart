@@ -9,6 +9,8 @@ class News {
 
   Future<void> getNews()async{
     String url ="https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=dddf528d0aed42ebb93f4188c74d121e";
+    // String url ="https://newsapi.org/v2/everything?q=india&from=2025-07-28&sortBy=publishedAt&apiKey=dddf528d0aed42ebb93f4188c74d121e";
+
 
     var response = await http.get(Uri.parse(url));
 
