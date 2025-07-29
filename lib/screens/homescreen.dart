@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taaza_khabar/models/article_mdel.dart';
 import 'package:taaza_khabar/models/category_model.dart';
+import 'package:taaza_khabar/screens/article_view.dart';
 import 'package:taaza_khabar/screens/categories_news.dart';
 import 'package:taaza_khabar/services/data.dart';
 import 'package:taaza_khabar/services/news_api.dart';
@@ -37,7 +38,7 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212), // Dark background
+      backgroundColor: const Color(0xFF121212),
       appBar: AppBar(
         backgroundColor: const Color(0xFF1E1E1E),
         elevation: 0,
@@ -76,8 +77,15 @@ class _HomescreenState extends State<Homescreen> {
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> CategoriesNews(name: categories[index].categoryName.toString())));
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategoriesNews(
+                              name: categories[index].categoryName.toString(), url: '',
+                            ),
+                          ),
+                        );
                       },
                       child: CategoryTile(
                         image: categories[index].image,
@@ -111,10 +119,23 @@ class _HomescreenState extends State<Homescreen> {
                   child: ListView.builder(
                     itemCount: articles.length,
                     itemBuilder: (context, index) {
-                      return News_block(
-                        image: articles[index].urlToImage ?? '',
-                        title: articles[index].title ?? 'No Title',
-                        news: articles[index].desc ?? 'No Description',
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ArticleView(
+                                articleUrl: articles[index].url ?? '',
+                              ),
+                            ),
+                          );
+                        },
+                        child: News_block(
+                          url: articles[index].url ?? '',
+                          image: articles[index].urlToImage ?? '',
+                          title: articles[index].title ?? 'No Title',
+                          news: articles[index].desc ?? 'No Description',
+                        ),
                       );
                     },
                   ),

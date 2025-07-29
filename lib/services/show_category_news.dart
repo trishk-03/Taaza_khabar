@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:taaza_khabar/models/show_category.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
 class ShowCategoryNews {
   List<ShowCategoryModel> categories =[];

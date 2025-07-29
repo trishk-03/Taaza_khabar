@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taaza_khabar/screens/splash_screen.dart';
 
 void main (){
+
   runApp(MyApp());
 }
 

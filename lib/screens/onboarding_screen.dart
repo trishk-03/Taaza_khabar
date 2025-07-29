@@ -73,7 +73,7 @@ class OnboardingScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Your daily dose of fresh and trusted news, right at your fingertips.',
+                      '🔥 Powered by Flutter + Dart ⚙️ | News at your fingertips 🖐️ — built by Trishak 💡',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey[300],
@@ -89,7 +89,7 @@ class OnboardingScreen extends StatelessWidget {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (_) => const Homescreen()),
                           );

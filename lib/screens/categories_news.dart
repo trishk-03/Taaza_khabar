@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:taaza_khabar/models/show_category.dart';
 import '../services/show_category_news.dart';
+import 'article_view.dart';
 
 class CategoriesNews extends StatefulWidget {
   final String name;
-  const CategoriesNews({super.key, required this.name});
+  final String url;
+  const CategoriesNews({super.key, required this.name, required this.url});
 
   @override
   State<CategoriesNews> createState() => _CategoriesNewsState();
@@ -79,9 +81,10 @@ class _CategoriesNewsState extends State<CategoriesNews> {
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
                     final category = categories[index];
+
                     return GestureDetector(
                       onTap: (){
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=> ArticleView));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ArticleView(articleUrl: categories[index].url!,)));
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 24.0),

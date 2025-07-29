@@ -4,12 +4,12 @@ class News_block extends StatelessWidget {
   final String image;
   final String title;
   final String news;
+  final String url ="https://www.barrons.com/articles/novo-nordisk-stock-ozempic-wegovy-cut-outlook-50016e0a";
 
   const News_block({
     super.key,
     required this.image,
-    required this.title,
-    required this.news,
+    required this.title, required this.news, required String url,
   });
 
   @override
@@ -77,13 +77,14 @@ class News_block extends StatelessWidget {
                         color: Colors.deepPurpleAccent,
                         borderRadius: BorderRadius.circular(20)),
                     child: const Center(
-                      child: Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 30.0,
+
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ],
