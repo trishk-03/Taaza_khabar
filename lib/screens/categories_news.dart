@@ -71,44 +71,68 @@ class _CategoriesNewsState extends State<CategoriesNews> {
                     topRight: Radius.circular(30),
                   ),
                 ),
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
+                child: loading
+                    ? const Center(child: CircularProgressIndicator(color: Colors.white))
+                    : ListView.builder(
                   padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          "assets/images/business.jpg",
-                          width: screenWidth,
-                          fit: BoxFit.cover,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    final category = categories[index];
+                    return GestureDetector(
+                      onTap: (){
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=> ArticleView));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 24.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.network(
+                                category.urlToImage ?? '',
+                                width: screenWidth,
+                                height: 200,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) => Container(
+                                  height: 200,
+                                  color: Colors.grey.shade800,
+                                  alignment: Alignment.center,
+                                  child: const Text(
+                                    'No Image',
+                                    style: TextStyle(color: Colors.white70),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              category.title ?? 'No Title',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              category.desc ?? 'No Description',
+                              style: TextStyle(
+                                color: Colors.grey.shade300,
+                                fontSize: 15.0,
+                                height: 1.5,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      Text(
-                        "Title of the news content ",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        "descrpition lines about the news app",
-                        style: TextStyle(
-                          color: Colors.grey.shade300,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w400,
-                          height: 1.5,
-                        ),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
-            ),
+            )
+
           ],
         ),
       ),
