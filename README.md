@@ -1,16 +1,25 @@
-# taaza_khabar
+# 📰 Taaza Khabar
 
-A new Flutter project.
+Your daily dose of fresh and trusted news, right at your fingertips.  
+📱 *A Flutter-powered application made by Trishak.* 🚀
 
-## Getting Started
+## 📸 Screenshots
+I will upload it soon
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
+- Category-wise news filtering
+- WebView for detailed reading
+- Modern UI using Flutter
+- Realtime news with API
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠️ Tech Stack
+- Flutter & Dart 🐦
+- REST API (NewsAPI or RSS) 🌐
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🔧 Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/yourusername/taaza-khabar.git
+cd taaza-khabar
+flutter pub get
+flutter run
