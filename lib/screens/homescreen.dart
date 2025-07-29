@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taaza_khabar/models/article_mdel.dart';
 import 'package:taaza_khabar/models/category_model.dart';
+import 'package:taaza_khabar/screens/categories_news.dart';
 import 'package:taaza_khabar/services/data.dart';
 import 'package:taaza_khabar/services/news_api.dart';
 import 'package:taaza_khabar/ui_helpers/widgets.dart';
@@ -45,7 +46,7 @@ class _HomescreenState extends State<Homescreen> {
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
-            color: Colors.deepPurpleAccent,
+            color: Colors.white,
             letterSpacing: 1.0,
           ),
         ),
@@ -64,7 +65,7 @@ class _HomescreenState extends State<Homescreen> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                  color: Colors.deepPurpleAccent,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 10),
@@ -74,9 +75,14 @@ class _HomescreenState extends State<Homescreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
-                    return CategoryTile(
-                      image: categories[index].image,
-                      categoryname: categories[index].categoryName,
+                    return GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> CategoriesNews(name: categories[index].categoryName.toString())));
+                      },
+                      child: CategoryTile(
+                        image: categories[index].image,
+                        categoryname: categories[index].categoryName,
+                      ),
                     );
                   },
                 ),
@@ -87,7 +93,7 @@ class _HomescreenState extends State<Homescreen> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                  color: Colors.deepPurpleAccent,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 10),
